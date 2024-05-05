@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/aws:2023.04.1
+    steps:
+      - checkout
+      - run:
+          name: Lets deploy this application
+          command: |
+            ls
+            aws s3 sync . s3://$AWS_S3_BUCKET/
+
+workflows:
+  Production:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: main
