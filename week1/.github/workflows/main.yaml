@@ -20,7 +20,7 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: us-east-1
 
-      - name: Deploy static to s3
+      - name: Deploy updated static content to s3
         run: aws s3 sync ./web s3:deenstatic
 
       - name: Invalidate cloudfront cache
