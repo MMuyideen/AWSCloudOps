@@ -21,7 +21,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy updated static content to s3
-        run: aws s3 sync ./web s3:deenstatic
+        run: aws s3 sync web/ s3:deenstatic
 
       - name: Invalidate cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id d1v1glwzy38oz4 --paths "/*"
